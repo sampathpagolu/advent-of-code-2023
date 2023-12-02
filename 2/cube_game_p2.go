@@ -40,16 +40,20 @@ func powerOfFewestNumberOfCubes(red int, green int, blue int) int{
 
 func parseInputString(txt string) (int, int, int){
     biggestRed, biggestGreen, biggestBlue := 0,0,0
+    // split by ":" to get the game Id and get the cubes
     _1 := strings.Split(txt, ":")
+    // split each draw
     draws := strings.Split(_1[1], ";")
     for _, draw := range draws {
+        // split each cube color
         cubes := strings.Split(draw, ",")
 
         for _, cube := range cubes {
-
+            // split the number and letter
             cube_split := strings.Split(cube, " ")
             c := []string{}
             for i := 0; i < len(cube_split); i++ {
+                // remove empty strings
                 if len(cube_split[i]) > 0 {
                     c = append(c, cube_split[i])
                 }
